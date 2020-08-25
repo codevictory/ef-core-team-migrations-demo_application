@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Model;
 
 namespace Application
@@ -7,13 +8,17 @@ namespace Application
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Pharaoh asa = new Pharaoh
+            System.Console.WriteLine("List of pharaohs in database:");
+            using (var context = new ModelContext())
             {
-                Name = "sadsad"
-            };
+                context.Pharaohs.Add(new Pharaoh { Name = "Ramesses II (Ozymandias)" });
+                context.SaveChanges();
 
-            System.Console.WriteLine(asa.Name);
+                var pharaohs = context.Pharaohs.ToList();
+
+                foreach (var pharaoh in pharaohs)
+                    System.Console.WriteLine("" + pharaoh.Id + ": " + pharaoh.Name);
+            }
         }
     }
 }
