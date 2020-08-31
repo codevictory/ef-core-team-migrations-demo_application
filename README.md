@@ -1,4 +1,4 @@
-# Solution for EF Core migrations in team environment - Application
+# Demo solution for EF Core migrations in team environment - Application
 Application part of tutorial how to use EF Core migrations in team of multiple developers.
 
 ## Structure
